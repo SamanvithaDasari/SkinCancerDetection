@@ -1,0 +1,7 @@
+pathlib
+tensorflow
+matplotlib
+numpy
+pandas
+pillow
+seaborn
