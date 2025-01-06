@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skin Cancer Detection</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background: linear-gradient(to bottom, #ffecd2, #fcb69f); /* Light peach gradient */
+            font-family: Arial, sans-serif;
+            color: #003366; /* Dark blue */
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+
+        h1 {
+            color: #003366;
+            font-weight: bold;
+            position: absolute;
+            top: 10%;
+            transform: translateY(-50%);
+            z-index: 2;
+        }
+
+        p {
+            font-size: 18px;
+        }
+
+        .btn-primary {
+            background-color: #003366;
+            border-color: #003366;
+        }
+
+        .btn-primary:hover {
+            background-color: #002244;
+            border-color: #002244;
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+        .form-control-file {
+            border: 2px solid #003366;
+            border-radius: 8px;
+            padding: 8px;
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        #result {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .result-card {
+            background-color: #ffffff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 250px;
+        }
+
+        .result-card h5 {
+            color: #003366;
+            margin-bottom: 10px;
+        }
+
+        .background-symbol {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 500px;
+            color: #003366;
+            opacity: 0.1;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="welcome">Welcome, Doctor</h1>
+    <div class="background-symbol">&#x1F397;</div> <!-- Black ribbon symbol for skin cancer -->
+    <div class="container">
+        <p class="text-center">Upload a dermoscopic image to identify the type of skin cancer.</p>
+
+        <!-- Form for Image Upload -->
+        <form action="/predict" method="post" enctype="multipart/form-data" class="text-center">
+            <div class="form-group">
+                <input type="file" name="file" class="form-control-file" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Predict</button>
+        </form>
+
+        <!-- Display Results -->
+        <div id="result" class="mt-4 text-center">
+            <!-- This is where the prediction result will be displayed -->
+        </div>
+    </div>
+
+    <!-- JavaScript to handle the result display -->
+    <script>
+        const form = document.querySelector('form');
+        const resultDiv = document.getElementById('result');
+        const welcomeMessage = document.getElementById('welcome');
+
+        form.addEventListener('submit', async function (event) {
+            event.preventDefault();
+            const formData = new FormData(form);
+            const response = await fetch('/predict', { method: 'POST', body: formData });
+            const result = await response.json();
+
+            resultDiv.innerHTML = '';
+
+            // Remove welcome message on prediction
+            if (welcomeMessage) {
+                welcomeMessage.remove();
+            }
+
+            if (result.error) {
+                resultDiv.innerHTML = `<div class="alert alert-danger">${result.error}</div>`;
+            } else {
+                resultDiv.innerHTML = '<h4 class="w-100 text-center">Prediction Results:</h4>';
+
+                // Loop through each model's prediction result
+                result.model_predictions.forEach(res => {
+                    const resultCard = document.createElement('div');
+                    resultCard.className = 'result-card';
+                    resultCard.innerHTML = `
+                        <h5>Model: ${res.model}</h5>
+                        <p>Predicted Class: ${res.predicted_class}</p>
+                        <p>Probability: ${(res.probability * 100).toFixed(2)}%</p>
+                    `;
+                    resultDiv.appendChild(resultCard);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
