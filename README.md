@@ -56,7 +56,7 @@ You can install them using:
 ```bash
 pip install -r requirements.txt
 ```
-## Sscreenshots
+## Screenshots
 ![Screenshot 2025-01-06 114208](https://github.com/user-attachments/assets/4e50c123-dd94-41cb-b549-d83566849529)
 
 after predicting:
