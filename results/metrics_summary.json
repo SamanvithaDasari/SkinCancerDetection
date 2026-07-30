@@ -1,0 +1,27 @@
+{
+  "cnn_model1": {
+    "accuracy": 0.4576271186440678,
+    "macro_auc": 0.8035349767926494,
+    "report": "                            precision    recall  f1-score   support\n\n         actinic keratosis      0.333     0.062     0.105        16\n      basal cell carcinoma      0.625     0.625     0.625        16\n            dermatofibroma      0.667     0.375     0.480        16\n                  melanoma      0.286     0.250     0.267        16\n                     nevus      0.323     0.625     0.426        16\npigmented benign keratosis      0.394     0.812     0.531        16\n      seborrheic keratosis      0.000     0.000     0.000         3\n   squamous cell carcinoma      0.875     0.438     0.583        16\n           vascular lesion      0.750     1.000     0.857         3\n\n                  accuracy                          0.458       118\n                 macro avg      0.472     0.465     0.430       118\n              weighted avg      0.494     0.458     0.431       118\n"
+  },
+  "cnn_model_aug": {
+    "accuracy": 0.4406779661016949,
+    "macro_auc": 0.8167791512740362,
+    "report": "                            precision    recall  f1-score   support\n\n         actinic keratosis      0.778     0.438     0.560        16\n      basal cell carcinoma      0.292     0.438     0.350        16\n            dermatofibroma      0.545     0.375     0.444        16\n                  melanoma      0.250     0.125     0.167        16\n                     nevus      0.429     0.750     0.545        16\npigmented benign keratosis      0.381     0.500     0.432        16\n      seborrheic keratosis      0.500     0.667     0.571         3\n   squamous cell carcinoma      0.556     0.312     0.400        16\n           vascular lesion      0.750     1.000     0.857         3\n\n                  accuracy                          0.441       118\n                 macro avg      0.498     0.512     0.481       118\n              weighted avg      0.470     0.441     0.429       118\n"
+  },
+  "cnn_model_bal": {
+    "accuracy": 0.3644067796610169,
+    "macro_auc": 0.7715635952448613,
+    "report": "                            precision    recall  f1-score   support\n\n         actinic keratosis      0.250     0.125     0.167        16\n      basal cell carcinoma      0.357     0.312     0.333        16\n            dermatofibroma      0.571     0.250     0.348        16\n                  melanoma      0.357     0.312     0.333        16\n                     nevus      0.293     0.750     0.421        16\npigmented benign keratosis      0.368     0.438     0.400        16\n      seborrheic keratosis      0.000     0.000     0.000         3\n   squamous cell carcinoma      0.625     0.312     0.417        16\n           vascular lesion      0.600     1.000     0.750         3\n\n                  accuracy                          0.364       118\n                 macro avg      0.380     0.389     0.352       118\n              weighted avg      0.398     0.364     0.347       118\n"
+  },
+  "resnet_cnn": {
+    "accuracy": 0.3305084745762712,
+    "macro_auc": 0.7798445344321303,
+    "report": "                            precision    recall  f1-score   support\n\n         actinic keratosis      0.200     0.062     0.095        16\n      basal cell carcinoma      0.250     0.250     0.250        16\n            dermatofibroma      0.600     0.188     0.286        16\n                  melanoma      0.111     0.062     0.080        16\n                     nevus      0.318     0.875     0.467        16\npigmented benign keratosis      0.375     0.562     0.450        16\n      seborrheic keratosis      0.000     0.000     0.000         3\n   squamous cell carcinoma      0.444     0.250     0.320        16\n           vascular lesion      0.600     1.000     0.750         3\n\n                  accuracy                          0.331       118\n                 macro avg      0.322     0.361     0.300       118\n              weighted avg      0.327     0.331     0.283       118\n"
+  },
+  "resnet_new": {
+    "accuracy": 0.1440677966101695,
+    "macro_auc": 0.5425917045562186,
+    "report": "                            precision    recall  f1-score   support\n\n         actinic keratosis      0.143     1.000     0.250        16\n      basal cell carcinoma      0.000     0.000     0.000        16\n            dermatofibroma      0.000     0.000     0.000        16\n                  melanoma      0.000     0.000     0.000        16\n                     nevus      1.000     0.062     0.118        16\npigmented benign keratosis      0.000     0.000     0.000        16\n      seborrheic keratosis      0.000     0.000     0.000         3\n   squamous cell carcinoma      0.000     0.000     0.000        16\n           vascular lesion      0.000     0.000     0.000         3\n\n                  accuracy                          0.144       118\n                 macro avg      0.127     0.118     0.041       118\n              weighted avg      0.155     0.144     0.050       118\n"
+  }
+}
