@@ -1,0 +1,16 @@
+venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Model weights — track with Git LFS instead if you want them in the repo
+*.h5
+*.keras
+vit_skin_model/
+
+# Generated evaluation outputs
+results/
+gradcam_output.png
+
+.env
+.DS_Store
